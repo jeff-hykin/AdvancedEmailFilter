@@ -2,6 +2,12 @@
 var Imap = require('imap'),
     inspect = require('util').inspect;
 
+var $ = require('jQuery');
+
+$(document).ready(function() {
+    $('.modal').modal();
+});
+
 function connectIMAP() {
     var email = $('[name="email"]').val();
     var password = $('[name="password"]').val();
@@ -59,6 +65,12 @@ function connectIMAP() {
     
     
     imap.once('error', function(err) {
+        if(/Your account is not enabled for IMAP use/.test(err)) {
+            var errMsg = String(err).replace(/^Error: (.+)(?= \(Failure)[\s\S]+/,"$1")
+            $('#con-err-msg').text(errMsg);
+            $('#connection-error-mod').modal('open');
+            console.log('IMAP error');
+        }
         console.log(err);
     });
     

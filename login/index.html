@@ -22,11 +22,22 @@
       <h1 class='white-text roboto-font'>Sign into Gmail</h1>
       <form id='user-login' class='white-text'>
             Email:
-            <input type="text" name="email"> <br>
+            <input type="text" name="email" autofocus> <br>
             Password:
             <input type="password" name="password"> <br>
       </form>
       <button onclick='connectIMAP()' class='waves-effect waves-dark btn white black-text'>Connect</button>
+  </div>
+
+  <!-- Connection Error Modal Structure -->
+  <div id="connection-error-mod" class="modal">
+    <div class="modal-content">
+      <h4>Connection Error</h4>
+      <p id='con-err-msg'></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
   </div>
 
   <!--Import jQuery and materialize.js-->
