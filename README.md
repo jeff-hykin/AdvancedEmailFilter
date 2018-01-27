@@ -1,1 +1,1 @@
-# AdvancedEmailFilter
+# FilterAllMyEmails
