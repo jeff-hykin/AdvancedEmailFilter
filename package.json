@@ -1,19 +1,17 @@
 {
   "name": "FAME",
   "version": "0.0.1",
-  "description": "An easy to use console",
+  "description": "An advanced email filter",
   "main": "main.js",
   "scripts": {
     "test": "electron .",
-    "make": "sh make.sh",
-    "update": "sh make.sh;mv -f ~/Desktop/FAME.app /Applications/FAME.app"
+    "make": "sh make.sh"
   },
   "keywords": [
-    "shell",
-    "console",
-    "easy"
+    "email",
+    "filter"
   ],
-  "author": "Jeff Hykin",
+  "author": "Numbuh1 hack team",
   "license": "ISC",
   "devDependencies": {
     "devtron": "^1.4.0",
