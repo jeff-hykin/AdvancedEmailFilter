@@ -19,3 +19,5 @@ rm -rf "$HOME/Desktop/resh-darwin-x64"
 # this just un-comments-out the line:
 #    require('electron-debug')({showDevTools: true})
 sed -i ''  -e "s/\/\/ *require(\\'electron-debug/require(\\'electron-debug/" main.js
+
+open "$HOME/Desktop/resh.app"
