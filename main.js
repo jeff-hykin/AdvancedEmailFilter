@@ -13,7 +13,7 @@ let mainWindow
 app.on('ready', () => 
     {
     
-        mainWindow = new BrowserWindow(/*{titleBarStyle: 'hiddenInset'}*/);
+        mainWindow = new BrowserWindow({icon:__dirname+'/logo.png'}/*{titleBarStyle: 'hiddenInset'}*/);
         mainWindow.loadURL(path.join('file://', __dirname, 'intro/index.html'))
         mainWindow.show()
 
