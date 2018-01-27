@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "child_process": "^1.0.2",
+    "imap": "^0.8.19",
     "jquery": "^3.2.1",
-    "materialize-css": "^0.100.2"
+    "materialize-css": "^0.100.2",
+    "prompt": "^1.0.0"
   }
 }
