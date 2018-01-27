@@ -7,7 +7,7 @@ rm -rf "$HOME/Desktop/FAME.app"
 sed -i ''  -e "s/require(\\'electron-debug/\/\/ require(\\'electron-debug/" main.js
 
 # then package up everything, name it FAME
-electron-packager $PWD FAME --debug --platform=darwin --arch=x64 --electron-version=1.6.11 --out="$HOME/Desktop" --overwrite
+electron-packager $PWD FAME --debug --platform=darwin --arch=x64 --electron-version=1.7.10 --out="$HOME/Desktop" --overwrite
 
 # once thats done take the app out of the package 
 mv "$HOME/Desktop/FAME-darwin-x64/FAME.app" "$HOME/Desktop"
