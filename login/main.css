@@ -4,6 +4,11 @@ body, html {
     background: #33ccff;
 }
 
+#err-inf {
+    margin-top: 20px;
+    position: absolute;
+}
+
 .roboto-font {
     font: 7vw 'Roboto', sans-serif;
 }

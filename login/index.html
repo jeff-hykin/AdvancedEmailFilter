@@ -26,7 +26,9 @@
             Password:
             <input type="password" name="password"> <br>
       </form>
-      <button onclick='connectIMAP()' class='waves-effect waves-dark btn white black-text'>Connect</button>
+      <button id='login-btn' onclick='connectIMAP()' class='waves-effect waves-dark btn white black-text'>Connect</button>
+
+      <div id='err-inf' class="red-text"></div>
   </div>
 
   <!-- Connection Error Modal Structure -->
@@ -36,7 +38,7 @@
       <p id='con-err-msg'></p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
 
