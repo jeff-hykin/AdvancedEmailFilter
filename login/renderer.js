@@ -94,5 +94,7 @@ function connectIMAP() {
         });
         
         imap.connect();
+
+        location.href = "../filter/index.html";
     }
 }
