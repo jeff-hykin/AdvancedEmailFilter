@@ -38,11 +38,13 @@ function saveForm(){
     console.log(doWhat);
     console.log(toWhere);
     var filter = new filterActions.FilterClass(name, search1, search2, doWhat, toWhere);
-    $('#filter-list').prepend(filter.itemHTML());
+    var email = remote.getGlobal('auth').email;    
     if (name) {
-        if (Object.keys(remote.getGlobal('data').filters).indexOf(name) == -1 ) {
-            filterSync.add_data(name, search1, search2, doWhat, toWhere); // action, resultLabel
+        if (Object.keys(remote.getGlobal('data').filters[email]).indexOf(name) == -1 ) {
+            filterSync.add_filter(name, search1, search2, doWhat, toWhere); // action, resultLabel
             filterSync.save_data(remote.getGlobal('data').filters, 'filters.js');
+            searchInbox([search1,search2]);//sends the now formatted search form to the function in search.js
+            $('#filter-list').prepend(filter.itemHTML());            
         }
         else {
             // Show an error letting user know name already exists
@@ -50,5 +52,5 @@ function saveForm(){
     } else {
         // Show an error letting user know name is required
     }
-    searchInbox([search1,search2]);//sends the now formatted search form to the function in search.js
+    
 }

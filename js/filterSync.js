@@ -6,7 +6,7 @@ module.exports = {
         return fs.existsSync(filename);
     },
 
-    add_data (name, search1, search2, action, resultLabel) {
+    add_filter (name, search1, search2, action, resultLabel) {
         // make sure email has been set
         this.add_email();
         const email = remote.getGlobal('auth').email;
@@ -14,9 +14,19 @@ module.exports = {
             "search1": search1,
             "search2": search2,
             "action": action,
-            "resultLabel": resultLabel
+            "resultLabel": resultLabel,
+            "enabled": true
         }; // Add new entry
         // This will need updated to support windows/packaging
+    },
+
+    remove_filter (name) {
+        // Make sure email has been set
+        this.add_email();
+        const email = remote.getGlobal('auth').email;
+        if (Object.keys(remote.getGlobal('data').filters[email].indexOf(name) > -1)) {
+            delete remote.getGlobal('data').filters[email][name];
+        }
     },
 
     save_data (data, filename) {
