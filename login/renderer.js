@@ -35,8 +35,6 @@ function connectIMAP() {
             tls: true
         });
 
-        // remote.getGlobal('auth').password will get password
-
         //opens filters if the credentials work
         imap.once('ready', function() {
             // Load saved filters if they exist
