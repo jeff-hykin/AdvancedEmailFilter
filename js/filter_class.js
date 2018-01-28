@@ -26,13 +26,13 @@ module.exports.FilterClass = class FilterClass
         console.log(this.searchCriteria);
         if(this.enabled){
             var buttonHTML = `
-                <a id='${name}-enabled' class="waves-effect waves-light btn green item-toggle" onclick='toggleEnable(${this.name})'>Enabled</a>
-                <a id='${name}-disabled' class="waves-effect waves-light btn red item-toggle hide" onclick='toggleEnable(${this.name})'>Disabled</a>
+                <a id='${this.name}-enabled' class="waves-effect waves-light btn green item-toggle" onclick='toggleEnable("${this.name}")'>Enabled</a>
+                <a id='${this.name}-disabled' class="waves-effect waves-light btn red item-toggle hide" onclick='toggleEnable("${this.name}")'>Disabled</a>
             `;
         } else {
             var buttonHTML = `
-                <a id='${name}-enabled' class="waves-effect waves-light btn green item-toggle hide" onclick='toggleEnable(${this.name})'>Enabled</a>
-                <a id='${name}-disabled' class="waves-effect waves-light btn red item-toggle" onclick='toggleEnable(${this.name})'>Disabled</a>
+                <a id='${this.name}-enabled' class="waves-effect waves-light btn green item-toggle hide" onclick='toggleEnable("${this.name}")'>Enabled</a>
+                <a id='${this.name}-disabled' class="waves-effect waves-light btn red item-toggle" onclick='toggleEnable("${this.name}")'>Disabled</a>
             `;
         }
         return `<li id='${this.name}'>

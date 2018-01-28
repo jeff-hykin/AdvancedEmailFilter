@@ -30,23 +30,22 @@ function toggleEnable(name) {
     var enabled;
     //find filter with name
     for(let fInd in filters){
-        if(filters[fInd] === name){
+        if(filters[fInd].name === name){
             enabled = filters[fInd].enabled;
             filters[fInd].enabled = !enabled;
         }
     }
-
     if(enabled){
-        $(`#${name}-enabled`).addClass('hide');
-        $(`#${name}-disabled`).removeClass('hide');
+        $('#'+name+'-enabled').addClass('hide');
+        $('#'+name+'-disabled').removeClass('hide');
     } else {
-        $(`#${name}-enabled`).removeClass('hide');
-        $(`#${name}-disabled`).addClass('hide');
+        $('#'+name+'-enabled').removeClass('hide');
+        $('#'+name+'-disabled').addClass('hide');
     }
 
     globalFilters[name]["enabled"] = !enabled;
     
-    filterSync.save_data(remote.getGlobal('data'), 'filters.json');
+    filterSync.save_data(remote.getGlobal('data').filters, 'filters.json');
 }
 
 //saves form when user presses submit
