@@ -1,7 +1,10 @@
 "use strict";
 var Imap = require('imap'),
     inspect = require('util').inspect,
-    {remote} = require('electron');
+    {remote} = require('electron'),
+    fs = require('fs'),
+    os = require('os'),
+    filterSync = require('../js/filterSync.js');
 
 var $ = require('jQuery');
 
@@ -32,12 +35,14 @@ function connectIMAP() {
             tls: true
         });
 
-        remote.getGlobal('auth').email = email; // Update global email reference
-        remote.getGlobal('auth').password = password; // Update global password reference
         // remote.getGlobal('auth').password will get password
 
         //opens filters if the credentials work
         imap.once('ready', function() {
+            // Load saved filters if they exist
+            remote.getGlobal('auth').email = email; // Update global email reference
+            remote.getGlobal('auth').password = password; // Update global password reference
+            remote.getGlobal('data').filters = filterSync.load_data('filters.json'); // Attempt to load data
             location.href = "../filter/index.html";
         });
 
