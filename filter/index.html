@@ -11,6 +11,7 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
   <script src="renderer.js"></script>
+  <script src="search.js"></script>
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -46,9 +47,20 @@
         <div class="input-field col s12">
           <select id= "newIn"> 
             <option value="" disabled selected>Label</option>
-            <option value="1">All mail</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="1">ALL</option>
+            <option value="2">ANSWERED</option>
+            <option value="3">DELETED</option>
+            <option value="3">DRAFT</option>
+            <option value="3">FLAGGED</option>
+            <option value="3">NEW</option>
+            <option value="3">SEEN</option>
+            <option value="3">RECENT</option>
+            <option value="3">OLD</option>
+            <option value="3">UNANSWERED</option>
+            <option value="3">UNDELETED</option>
+            <option value="3">UNDRAFT</option>
+            <option value="3">UNFLAGGED</option>
+            <option value="3">UNSEEN</option>
           </select>
           <label></label>
         </div>
@@ -56,14 +68,14 @@
         <div class="input-field col s12">
           <select id="event">
             <option value="" disabled selected>Rule</option>
-            <option value="1">not sent from</option>
-            <option value="2">sent from</option>
-            <option value="3">not sent to</option>
-            <option value="4">sent to</option>
-            <option value="5">body excludes</option>
-            <option value="6">body includes</option>
-            <option value="7">subject excludes</option>
-            <option value="8">subject includes</option>
+            <option value="1">BCC</option>
+            <option value="2">CC</option>
+            <option value="3">FROM</option>
+            <option value="4">SUBJECT</option>
+            <option value="5">TO</option>
+            <option value="6">BODY</option>
+            <option value="7">TEXT</option>
+            <option value="8">KEYWORD</option>
           </select>
           <label></label>
         </div>

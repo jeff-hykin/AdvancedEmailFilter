@@ -13,8 +13,6 @@ $(document).ready(function () {
 });
 
 
-console.log(remote.getGlobal('auth').email);
-console.log(remote.getGlobal('auth').password);
 
 //saves form when user presses submit
 function saveForm(){
@@ -22,16 +20,16 @@ function saveForm(){
     var select2 = document.getElementById("event");
     var select3 = document.getElementById("doWhat");
     var select4 = document.getElementById("toWhere");
-    var newIn = "'" + select1.options[select1.selectedIndex].text + "'";
-    var event = select2.options[select2.selectedIndex].text;
+    var search1 = select1.options[select1.selectedIndex].text;
+    var search2 = [select2.options[select2.selectedIndex].text, $('[name="word"]').val()];
     var doWhat = select3.options[select3.selectedIndex].text;
     var toWhere = select4.options[select4.selectedIndex].text;
     var word = $('[name="word"]').val();
-    console.log(word);
-    console.log(newIn);
-    console.log(event);
+    console.log(search1);
+    console.log(search2);
     console.log(doWhat);
     console.log(toWhere);
+    searchInbox([search1,search2]);
 }
 function timer_for(time_amount){
     return new Promise(resolve => 
