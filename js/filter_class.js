@@ -36,11 +36,13 @@ module.exports.FilterClass = class FilterClass
             `;
         }
         return `<li id='${this.name}'>
-        <div class="collapsible-header"><i class="material-icons">filter_list</i>${this.name}</div>
+        <div class="collapsible-header"><i class="material-icons">filter_list</i>${this.name}
+            <a id='${this.name}-delete' class="waves-effect waves-light btn red item-toggle" onclick='deleteFilter("${this.name}")'>Delete</a>
+        </div>
         <div class="collapsible-body background-white">
           <span>Filter info</span>`+buttonHTML+`
           <div>
-            Everything in ${this.searchLabel} that ${this.searchCriteria[0]} has ${this.searchCriteria[1]}, ${this.action} to/from ${this.resultLabel}
+            Everything in ${this.searchLabel} and ${this.searchCriteria[0]} has ${this.searchCriteria[1]}, then ${this.action} to/from ${this.resultLabel}
           </div>
         </div>
       </li>`

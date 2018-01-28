@@ -21,6 +21,19 @@ $(document).ready(function () {
     
 });
 
+function deleteFilter(name) {
+    filterSync.remove_filter(name);
+    //delete filter from array
+    for(let fInd in filters){
+        if(filters[fInd].name === name){
+            filters.splice(fInd,1);
+        }
+    }
+
+    //remove html
+    $('#'+name).remove();
+}
+
 function toggleEnable(name) {
     //Get name
     var allFilters = remote.getGlobal('data').filters;
