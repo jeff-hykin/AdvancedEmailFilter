@@ -12,6 +12,7 @@ $(document).ready(function () {
     $('.modal').modal();
     //$('.modal-trigger').leanModal();
     $('select').material_select();
+    remote.getGlobal('data').filters = filterSync.load_data('filters.json');
 
     //Show filters
     filters = filterActions.readFilters();
@@ -78,7 +79,7 @@ function saveForm(){
     if (name) {
         if (Object.keys(remote.getGlobal('data').filters[email]).indexOf(name) == -1 ) {
             filterSync.add_filter(name, search1, search2, doWhat, toWhere); // action, resultLabel
-            filterSync.save_data(remote.getGlobal('data').filters, 'filters.js');
+            filterSync.save_data(remote.getGlobal('data').filters, 'filters.json');
             searchInbox([search1,search2]);//sends the now formatted search form to the function in search.js
             $('#filter-list').prepend(filter.itemHTML());            
         }

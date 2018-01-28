@@ -17,6 +17,7 @@ module.exports = {
             "resultLabel": resultLabel,
             "enabled": true
         }; // Add new entry
+        console.log(remote.getGlobal('data').filters)
         // This will need updated to support windows/packaging
     },
 
@@ -25,8 +26,10 @@ module.exports = {
         this.add_email();
         const email = remote.getGlobal('auth').email;
         if (Object.keys(remote.getGlobal('data').filters[email]).indexOf(name) > -1) {
-            delete remote.getGlobal('data').filters[email][name]; // Delete key
+            console.log('t');
+            remote.getGlobal('data').filters[email][name] = undefined; // Delete key
             this.save_data(remote.getGlobal('data').filters, 'filters.json'); // Save changes
+            remote.getGlobal('data').filters = this.load_data('filters.json');
         }
     },
 

@@ -20,6 +20,15 @@ body, html {
     margin-right: 10px;
 }
 
+.delete-btn{
+    float: right;
+    margin: 5px;
+}
+
+.collapsible-header {
+    padding: 10px 1rem !important;
+}
+
 .roboto-font {
     font: 7vw 'Roboto', sans-serif;
 }

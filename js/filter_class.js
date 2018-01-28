@@ -11,7 +11,6 @@ module.exports.FilterClass = class FilterClass
         this.resultLabel = resultLabel;
         this.enabled = enabled;
         this.save()
-        console.log(searchCriteria);
         //logStepDown("end filter constructor")
     }
     delete() 
@@ -23,7 +22,6 @@ module.exports.FilterClass = class FilterClass
          
     }
     itemHTML(){
-        console.log(this.searchCriteria);
         if(this.enabled){
             var buttonHTML = `
                 <a id='${this.name}-enabled' class="waves-effect waves-light btn green item-toggle" onclick='toggleEnable("${this.name}")'>Enabled</a>
@@ -36,11 +34,10 @@ module.exports.FilterClass = class FilterClass
             `;
         }
         return `<li id='${this.name}'>
-        <div class="collapsible-header"><i class="material-icons">filter_list</i>${this.name}
-            <a id='${this.name}-delete' class="waves-effect waves-light btn red item-toggle" onclick='deleteFilter("${this.name}")'>Delete</a>
+        <div class="collapsible-header"><i class="material-icons">filter_list</i>${this.name}<a id='${this.name}-delete' class="delete-btn waves-effect waves-light btn red" style='float:right' onclick='deleteFilter("${this.name}")'>Delete</a>
         </div>
         <div class="collapsible-body background-white">
-          <span>Filter info</span>`+buttonHTML+`
+          <h5>Filter info</h5>`+buttonHTML+`
           <div>
             Everything in ${this.searchLabel} and ${this.searchCriteria[0]} has ${this.searchCriteria[1]}, then ${this.action} to/from ${this.resultLabel}
           </div>
