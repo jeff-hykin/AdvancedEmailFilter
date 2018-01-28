@@ -21,7 +21,7 @@
   <h1>Filters</h1>
   <a id="addbtn" class="btn-floating btn-large waves-effect waves-light red modal-trigger" href='#add-filter'><i class="material-icons">add</i></a>
 
-  <ul class="collapsible" data-collapsible="accordion">
+  <ul class="collapsible" data-collapsible="accordion" id="filter-list">
     <li>
       <div class="collapsible-header"><i class="material-icons">filter_list</i>First</div>
       <div class="collapsible-body background-white">
@@ -43,6 +43,8 @@
     <div class="modal-content">
       <h4>Add Filter</h4>
       <p>
+        <div class="col s12">Filter Name</div>
+        <input type="text" name="filter-name" class='col s12' id='rule-text' />
         <div class='col s12'>For everything new in</div>
         <div class="input-field col s12">
           <select id= "newIn"> 
