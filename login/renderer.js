@@ -1,6 +1,7 @@
 "use strict";
 var Imap = require('imap'),
-    inspect = require('util').inspect;
+    inspect = require('util').inspect,
+    {remote} = require('electron');
 
 var $ = require('jQuery');
 
@@ -29,6 +30,10 @@ function connectIMAP() {
             port: 993,
             tls: true
         });
+
+        remote.getGlobal('auth').email = email; // Update global email reference
+        remote.getGlobal('auth').password = password; // Update global password reference
+        // remote.getGlobal('auth').password will get password
 
         function openInbox(cb) {
             imap.openBox('INBOX', true, cb);
