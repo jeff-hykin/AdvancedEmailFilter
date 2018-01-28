@@ -44,7 +44,7 @@
       <p>
         <div class='col s12'>For everything new in</div>
         <div class="input-field col s12">
-          <select>
+          <select id= "newIn"> 
             <option value="" disabled selected>Label</option>
             <option value="1">All mail</option>
             <option value="2">Option 2</option>
@@ -54,7 +54,7 @@
         </div>
         if
         <div class="input-field col s12">
-          <select>
+          <select id="event">
             <option value="" disabled selected>Rule</option>
             <option value="1">not sent from</option>
             <option value="2">sent from</option>
@@ -67,19 +67,19 @@
           </select>
           <label></label>
         </div>
-        <input type='text' class='col s12' id='rule-text'>
+        <input type='text' name='word' class='col s12' id='rule-text'>
         then
         <div class="input-field col s12">
-          <select>
+          <select id="doWhat">
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Add</option>
             <option value="2">Remove</option>
           </select>
           <label></label>
         </div>
-        it from
+        it to/from
         <div class="input-field col s12">
-          <select>
+          <select id="toWhere">
             <option value="" disabled selected>Label</option>
             <option value="1">All mail</option>
             <option value="2">Option 2</option>
@@ -90,7 +90,7 @@
       </p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+      <a href="#!" onclick='saveForm()' class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
     </div>
   </div>
         

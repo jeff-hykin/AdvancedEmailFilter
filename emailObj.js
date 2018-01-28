@@ -6,8 +6,8 @@ var Imap = require('imap'),
     inspect = require('util').inspect;
 
 var imap = new Imap({
-  user: 'westsmithy@gmail.com',
-  password: 'Iforgot1!',
+  user: 'FAMEtestFAME@gmail.com',
+  password: 'justanotherpassword',
   host: 'imap.gmail.com',
   port: 993,
   tls: true
