@@ -10,18 +10,90 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
-  <script src="main.js"></script>
+  <script src="renderer.js"></script>
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 </head>
 <body>
-  <div class='center-align vertical-align'>
-      <h1 class='white-text roboto-font'>Filters</h1>
-  </div>
-  <a id="addbtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+  <h1>Filters</h1>
+  <a id="addbtn" class="btn-floating btn-large waves-effect waves-light red modal-trigger" href='#add-filter'><i class="material-icons">add</i></a>
 
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_list</i>First</div>
+      <div class="collapsible-body background-white">
+        <span>Filter info</span>
+        <a class="waves-effect waves-light btn green item-toggle">Enabled</a>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_list</i>Second</div>
+      <div class="collapsible-body background-white">
+        <span>Filter info</span>
+        <a class="waves-effect waves-light btn red item-toggle">Disabled</a>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Add Filter Modal Structure -->
+  <div id="add-filter" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Add Filter</h4>
+      <p>
+        <div class='col s12'>For everything new in</div>
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>Label</option>
+            <option value="1">All mail</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label></label>
+        </div>
+        if
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>Rule</option>
+            <option value="1">not sent from</option>
+            <option value="2">sent from</option>
+            <option value="3">not sent to</option>
+            <option value="4">sent to</option>
+            <option value="5">body excludes</option>
+            <option value="6">body includes</option>
+            <option value="7">subject excludes</option>
+            <option value="8">subject includes</option>
+          </select>
+          <label></label>
+        </div>
+        <input type='text' class='col s12' id='rule-text'>
+        then
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Add</option>
+            <option value="2">Remove</option>
+          </select>
+          <label></label>
+        </div>
+        it from
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>Label</option>
+            <option value="1">All mail</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label></label>
+        </div>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+    </div>
+  </div>
+        
   <!--Import jQuery and materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/hammer.min.js"></script>
