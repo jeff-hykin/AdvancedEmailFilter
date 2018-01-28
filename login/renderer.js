@@ -5,9 +5,9 @@ var Imap = require('imap'),
 
 var $ = require('jQuery');
 
+//submits form on enter key press
 $(document).ready(function() {
     $('.modal').modal();
-
     $(document).on('keydown keyup', event => {
         if(event.keyCode == 13) {
             $('#login-btn').click();
@@ -15,6 +15,7 @@ $(document).ready(function() {
     });
 });
 
+//function call on form submit
 function connectIMAP() {
     var email = $('[name="email"]').val();
     var password = $('[name="password"]').val();
@@ -35,50 +36,11 @@ function connectIMAP() {
         remote.getGlobal('auth').password = password; // Update global password reference
         // remote.getGlobal('auth').password will get password
 
-        function openInbox(cb) {
-            imap.openBox('INBOX', true, cb);
-        }
-
+        //opens filters if the credentials work
         imap.once('ready', function() {
-            
-            openInbox(function(err, box) {
-            if (err) throw err;
-            var f = imap.seq.fetch('1:3', {
-                bodies: 'HEADER.FIELDS (FROM TO SUBJECT DATE)',
-                struct: true
-            });
-            f.on('message', function(msg, seqno) {
-                console.log('Message #%d', seqno);
-                var prefix = '(#' + seqno + ') ';
-                msg.on('body', function(stream, info) {
-                var buffer = '';
-                stream.on('data', function(chunk) {
-                    buffer += chunk.toString('utf8');
-                });
-                stream.once('end', function() {
-                    console.log(prefix + 'Parsed header: %s', inspect(Imap.parseHeader(buffer)));
-                });
-                });
-                msg.once('attributes', function(attrs) {
-                console.log(prefix + 'Attributes: %s', inspect(attrs, false, 8));
-                });
-                msg.once('end', function() {
-                console.log(prefix + 'Finished');
-                });
-            });
-            f.once('error', function(err) {
-                console.log('Fetch error: ' + err);
-            });
-            f.once('end', function() {
-                console.log('Done fetching all messages!');
-                imap.end();
-            });
-            });
-            
+            location.href = "../filter/index.html";
         });
 
-        
-        
         imap.once('error', function(err) {
             if(/Failure/.test(err)) {
                 var errMsg = String(err).replace(/^Error: (.+)(?= \(Failure)[\s\S]+/,"$1")
@@ -94,7 +56,5 @@ function connectIMAP() {
         });
         
         imap.connect();
-
-        location.href = "../filter/index.html";
     }
 }
