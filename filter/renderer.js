@@ -12,8 +12,6 @@ $(document).ready(function () {
     
 });
 
-
-
 //saves form when user presses submit
 function saveForm(){
     var select1 = document.getElementById("newIn");
@@ -29,20 +27,5 @@ function saveForm(){
     console.log(search2);
     console.log(doWhat);
     console.log(toWhere);
-    searchInbox([search1,search2]);
+    searchInbox([search1,search2]);//sends the now formatted search form to the function in search.js
 }
-function timer_for(time_amount){
-    return new Promise(resolve => 
-    {
-        setTimeout(()=>{ resolve(null) }, time_amount)
-    })
-}
-
-async function GetData() {
-    while (true)
-    {
-        await timer_for(100)
-    }
-}
-
-GetData()

@@ -18,9 +18,9 @@ function searchInbox(crit) {
     imap.once('ready', function () {
         openInbox(function (err, box) {
             if (err) throw err;
-            imap.search(crit, function (err, results) {
+            imap.search(crit, function (err, results) { //seach call
                 if (err) throw err;
-                var f = imap.fetch(results, { bodies: '' }); //TODO modify/filter the emails instead of displaying them
+                var f = imap.fetch(results, { bodies: '' }); //grabbing the results
                 f.on('message', function (msg, seqno) {
                     console.log('Message #%d', seqno);
                     msg.on('body', function (stream, info) {
@@ -29,7 +29,7 @@ function searchInbox(crit) {
                             buffer += chunk.toString('utf8');
                         });
                         stream.once('end', function () {
-                            var header = Imap.parseHeader(buffer);
+                            var header = Imap.parseHeader(buffer);//TODO modify/filter the emails instead of displaying them
                             console.log(header.from);
                             console.log(header.to);
                             console.log(header.subject);
