@@ -24,13 +24,14 @@ module.exports = {
         // Make sure email has been set
         this.add_email();
         const email = remote.getGlobal('auth').email;
-        if (Object.keys(remote.getGlobal('data').filters[email].indexOf(name) > -1)) {
-            delete remote.getGlobal('data').filters[email][name];
+        if (Object.keys(remote.getGlobal('data').filters[email]).indexOf(name) > -1) {
+            delete remote.getGlobal('data').filters[email][name]; // Delete key
+            this.save_data(remote.getGlobal('data').filters, 'filters.json'); // Save changes
         }
     },
 
     save_data (data, filename) {
-        fs.writeFileSync('filters.json', JSON.stringify(data)); // Save new data in file
+        fs.writeFileSync(filename, JSON.stringify(data)); // Save new data in file
     },
 
     load_data (filename) {

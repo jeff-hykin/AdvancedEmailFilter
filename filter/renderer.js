@@ -32,11 +32,6 @@ function saveForm(){
     var toWhere = select4.options[select4.selectedIndex].text;
     var word = $('[name="word"]').val();
     var name = $('[name="filter-name"]').val();
-    
-    console.log(search1);
-    console.log(search2);
-    console.log(doWhat);
-    console.log(toWhere);
     var filter = new filterActions.FilterClass(name, search1, search2, doWhat, toWhere);
     var email = remote.getGlobal('auth').email;    
     if (name) {
