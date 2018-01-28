@@ -1,14 +1,16 @@
 
 module.exports = class FilterClass
 {
-    constructor (name,label_scope,logic)
+    constructor (name, searchLabel, searchCriteria, action, resultLabel)
     {
-        logStep("filter constructor")
-        this.name        = name
-        this.label_scope = label_scope
-        this.logic       = logic
+        //logStep("filter constructor")
+        this.name        = name;
+        this.searchLabel = searchLabel;
+        this.searchCriteria = searchCriteria;
+        this.action = action;
+        this.resultLabel = resultLabel;
         this.save()
-        logStepDown("end filter constructor")
+        //logStepDown("end filter constructor")
     }
     delete() 
     {

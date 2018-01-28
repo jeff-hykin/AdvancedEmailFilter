@@ -3,6 +3,7 @@ const { app , BrowserWindow , Menu } = require('electron')
 require('electron-debug')({showDevTools: true})
 const path = require('path')
 global.auth = {email: null, password: null}; // Global authentication object to store email and password
+global.data = {filters: null};
 
 
 function log(...things)
