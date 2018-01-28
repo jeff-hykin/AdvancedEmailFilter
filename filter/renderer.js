@@ -14,8 +14,8 @@ $(document).ready(function () {
 
     //Show filters
     let filters = filterActions.readFilters();
-    for(let filter in filters){
-        $('#filter-list').prepend(filter.itemHTML);
+    for(let ind in filters){
+        $('#filter-list').prepend(filters[ind].itemHTML());
     }
     
 });
@@ -32,10 +32,13 @@ function saveForm(){
     var toWhere = select4.options[select4.selectedIndex].text;
     var word = $('[name="word"]').val();
     var name = $('[name="filter-name"]').val();
+    
     console.log(search1);
     console.log(search2);
     console.log(doWhat);
     console.log(toWhere);
+    var filter = new filterActions.FilterClass(name, search1, search2, doWhat, toWhere);
+    $('#filter-list').prepend(filter.itemHTML());
     if (name) {
         if (Object.keys(remote.getGlobal('data').filters).indexOf(name) == -1 ) {
             filterSync.add_data(name, search1, search2, doWhat, toWhere); // action, resultLabel

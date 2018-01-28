@@ -11,6 +11,7 @@ module.exports.FilterClass = class FilterClass
         this.resultLabel = resultLabel;
         this.enabled = true;
         this.save()
+        console.log(searchCriteria);
         //logStepDown("end filter constructor")
     }
     delete() 
@@ -22,7 +23,8 @@ module.exports.FilterClass = class FilterClass
          
     }
     itemHTML(){
-        if(enabled){
+        console.log(this.searchCriteria);
+        if(this.enabled){
             var buttonHTML = `
                 <a class="waves-effect waves-light btn green item-toggle">Enabled</a>
                 <a class="waves-effect waves-light btn red item-toggle hide">Disabled</a>
@@ -51,7 +53,7 @@ module.exports.readFilters = function() {
     var filters = allFilters[email];
     var filterList = [];
     for(let name in filters) {
-        filterList.push(new FilterClass(name, filters[name][search1],filters[name][search2],filters[name][action],filters[name][resultLabel]));
+        filterList.push(new module.exports.FilterClass(name, filters[name]["search1"],filters[name]["search2"],filters[name]["action"],filters[name]["resultLabel"]));
     }
     return filterList;
 }
