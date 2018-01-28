@@ -1,7 +1,7 @@
 
 module.exports.FilterClass = class FilterClass
 {
-    constructor (name, searchLabel, searchCriteria, action, resultLabel)
+    constructor (name, searchLabel, searchCriteria, action, resultLabel, enabled=true)
     {
         //logStep("filter constructor")
         this.name        = name;
@@ -9,7 +9,7 @@ module.exports.FilterClass = class FilterClass
         this.searchCriteria = searchCriteria;
         this.action = action;
         this.resultLabel = resultLabel;
-        this.enabled = true;
+        this.enabled = enabled;
         this.save()
         console.log(searchCriteria);
         //logStepDown("end filter constructor")
@@ -26,13 +26,13 @@ module.exports.FilterClass = class FilterClass
         console.log(this.searchCriteria);
         if(this.enabled){
             var buttonHTML = `
-                <a class="waves-effect waves-light btn green item-toggle">Enabled</a>
-                <a class="waves-effect waves-light btn red item-toggle hide">Disabled</a>
+                <a id='${name}-enabled' class="waves-effect waves-light btn green item-toggle" onclick='toggleEnable(${this.name})'>Enabled</a>
+                <a id='${name}-disabled' class="waves-effect waves-light btn red item-toggle hide" onclick='toggleEnable(${this.name})'>Disabled</a>
             `;
         } else {
             var buttonHTML = `
-                <a class="waves-effect waves-light btn green item-toggle hide">Enabled</a>
-                <a class="waves-effect waves-light btn red item-toggle">Disabled</a>
+                <a id='${name}-enabled' class="waves-effect waves-light btn green item-toggle hide" onclick='toggleEnable(${this.name})'>Enabled</a>
+                <a id='${name}-disabled' class="waves-effect waves-light btn red item-toggle" onclick='toggleEnable(${this.name})'>Disabled</a>
             `;
         }
         return `<li id='${this.name}'>
@@ -53,7 +53,7 @@ module.exports.readFilters = function() {
     var filters = allFilters[email];
     var filterList = [];
     for(let name in filters) {
-        filterList.push(new module.exports.FilterClass(name, filters[name]["search1"],filters[name]["search2"],filters[name]["action"],filters[name]["resultLabel"]));
+        filterList.push(new module.exports.FilterClass(name, filters[name]["search1"],filters[name]["search2"],filters[name]["action"],filters[name]["resultLabel"],filters[name]["enabled"]));
     }
     return filterList;
 }

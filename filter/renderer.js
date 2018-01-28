@@ -6,6 +6,7 @@ var fs = require('fs');
 var filterSync = require('../js/filterSync.js')
 
 var $ = require('jQuery');
+var filters;
 
 $(document).ready(function () {
     $('.modal').modal();
@@ -13,12 +14,40 @@ $(document).ready(function () {
     $('select').material_select();
 
     //Show filters
-    let filters = filterActions.readFilters();
+    filters = filterActions.readFilters();
     for(let ind in filters){
         $('#filter-list').prepend(filters[ind].itemHTML());
     }
     
 });
+
+function toggleEnable(name) {
+    //Get name
+    var allFilters = remote.getGlobal('data').filters;
+    var email = remote.getGlobal('auth').email;
+    var globalFilters = allFilters[email];
+
+    var enabled;
+    //find filter with name
+    for(let fInd in filters){
+        if(filters[fInd] === name){
+            enabled = filters[fInd].enabled;
+            filters[fInd].enabled = !enabled;
+        }
+    }
+
+    if(enabled){
+        $(`#${name}-enabled`).addClass('hide');
+        $(`#${name}-disabled`).removeClass('hide');
+    } else {
+        $(`#${name}-enabled`).removeClass('hide');
+        $(`#${name}-disabled`).addClass('hide');
+    }
+
+    globalFilters[name]["enabled"] = !enabled;
+    
+    filterSync.save_data(remote.getGlobal('data'), 'filters.json');
+}
 
 //saves form when user presses submit
 function saveForm(){
