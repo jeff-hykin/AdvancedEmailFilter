@@ -1,0 +1,22 @@
+body, html {
+    height: 100%;
+    margin: 0; 
+    background: #33ccff;
+}
+
+#addbtn {
+    right : 30px;
+    bottom: 30px;
+    position: absolute;
+}
+
+.roboto-font {
+    font: 7vw 'Roboto', sans-serif;
+}
+
+.vertical-align {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
